@@ -1,0 +1,18 @@
+{% extends 'crm/base.html' %}
+
+{% block title %}Positions{% endblock title %}
+
+{% block menu_name %}<h3>Positions</h3>{% endblock menu_name %}
+{% block content %}
+
+{% for position in positions %}
+    <ul>
+        <li>{{ position.title }}</li>
+        <li><button><a href="{% url 'crm:edit_position' position.id %}">Edit position</a></button>
+            <button><a href="{% url 'crm:delete_position' position.id %}">Delete position</a></button></li>
+    </ul>
+    {% endfor %}
+
+    <button><a href="{% url 'crm:new_position' %}">Add position</a></button>
+
+{% endblock content %}

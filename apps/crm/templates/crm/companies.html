@@ -1,0 +1,15 @@
+{% extends 'crm/base.html' %}
+
+{% block title %}Companies{% endblock title %}
+
+{% block menu_name %}<h3>Companies</h3>{% endblock menu_name %}
+{% block content %}
+
+    {% for company in companies %}
+    <ul>
+        <li><a href="{% url 'crm:company' company.id %}">{{ company.name }}</a></li>
+    </ul>
+    {% endfor %}
+
+    <button><a href="{% url 'crm:new_company' %}">Add company</a></button>
+{% endblock content %}

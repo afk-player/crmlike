@@ -1,0 +1,15 @@
+{% extends 'crm/base.html' %}
+
+{% block title %}Edit company {{ company.name }}{% endblock title %}
+
+{% block menu_name %}<h3>Edit company</h3>{% endblock menu_name %}
+{% block content %}
+
+  <form action="{% url 'crm:edit_company' company.id %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button name="submit">Save</button>
+
+  </form>
+
+{% endblock content %}

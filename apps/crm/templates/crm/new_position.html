@@ -1,0 +1,12 @@
+{% extends 'crm/base.html' %}
+
+{% block title %}Add new position{% endblock title %}
+
+{% block menu_name %}<h3>New position</h3>{% endblock menu_name %}
+{% block content %}
+    <form method="post" enctype="multipart/form-data" action="{% url 'crm:new_position' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">Add</button>
+    </form>
+{% endblock content %}

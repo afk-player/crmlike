@@ -1,0 +1,23 @@
+{% extends 'crm/base.html' %}
+
+{% block title %}Partnerships{% endblock title %}
+
+{% block menu_name %}<h3>Partnerships</h3>{% endblock menu_name %}
+{% block content %}
+
+    {% for partnership in partnerships %}
+        <h4>Company: '{{ partnership.company }}'</h4>
+        <button><a href="{% url 'crm:edit_partnership' partnership.id %}">Edit partnership</a></button>
+        <button><a href="{% url 'crm:delete_partnership' partnership.id %}">Delete partnership</a></button>
+        <h5>Partners:</h5>
+        {% for partner in partnership.partner.all %}
+            <p>'{{ partner }}'</p>
+        {% endfor %}
+    </br>
+    {% endfor %}
+    <button><a href="{% url 'crm:new_partnership' %}">Add partnership</a></button>
+
+
+
+
+{% endblock content %}

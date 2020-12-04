@@ -1,0 +1,27 @@
+{% extends 'crm/base.html' %}
+
+{% block title %}Employees{% endblock title %}
+
+{% block menu_name %}<h3>Employees</h3>{% endblock menu_name %}
+{% block content %}
+
+
+<div class="positions">
+    <h4>Positions filter:</h4>
+    {% for position in positions %}
+        <a href="{% url 'crm:filtered_employees' position.id %}">{{ position }}</a></br>
+    {% endfor %}
+</div></br>
+
+<div class="employees">
+    <h4>Employees:</h4>
+    {% for employee in employees %}
+    <ul>
+        <li><a href="{% url 'crm:employee' employee.id %}">{{ employee.name }} {{ employee.surname }}</a>
+        </li>
+    </ul>
+    {% endfor %}
+    <button><a href="{% url 'crm:new_employee' %}">Add employee</a></button>
+</div>
+
+{% endblock content %}

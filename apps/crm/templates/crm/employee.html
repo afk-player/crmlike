@@ -1,0 +1,27 @@
+{% extends 'crm/base.html' %}
+
+{% block title %}{{ employee.name }} {{ employee.surname }}{% endblock title %}
+
+{% block menu_name %}<h3>Employee</h3>{% endblock menu_name %}
+{% block content %}
+    <ul>
+        <li>Name: {{ employee.name }} {{ employee.surname }}</li>
+        <li>Gender: {{ employee.gender }}</li>
+        <li>Birthday: {{ employee.date_of_birth }}</li>
+        <li>Country: {{ employee.country }}</li>
+        <li>Email: {{ employee.email }}</li>
+        <li>Position: {{ employee.position }}</li>
+        {% if employee.company %}
+        <li>Company: <a href="{% url 'crm:company' employee.company.id %}">{{ employee.company }}</a></li>
+        {% else %}
+        <li>Company: No company</li>
+        {% endif %}
+        <li>Bio: {{ employee.bio }}</li>
+        <li><img class="photo" src="{{ employee.employee_photo.url }}" alt="employee photo"></li>
+        <li><button><a href="{% url 'crm:edit_employee' employee.id %}">Edit employee</a></button>
+            <button><a href="{% url 'crm:delete_employee' employee.id %}">Delete employee</a></button></li>
+
+    </ul>
+{% endblock content %}
+
+

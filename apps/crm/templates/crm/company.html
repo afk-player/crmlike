@@ -1,0 +1,32 @@
+{% extends 'crm/base.html' %}
+
+{% block title %}{{ company.name }}{% endblock title %}
+
+{% block menu_name %}<h3>Company</h3>{% endblock menu_name %}
+{% block content %}
+    <ul>
+        <li>Name: {{ company.name }}</li>
+        <li>Country: {{ company.country }}</li>
+        <li>Foundation date: {{ company.foundation_date }}</li>
+        <li><button><a href="{% url 'crm:edit_company' company.id %}">Edit company</a></button>
+            <button><a href="{% url 'crm:delete_company' company.id %}">Delete company</a></button></li>
+        </ul><br>
+
+        <h3>Employees:</h3>
+        <ul>
+            {% for employee in employees %}
+            <li><a href="{% url 'crm:employee' employee.id %}">{{ employee }}</a></li>
+            {% endfor %}
+        </ul>
+        <li><button><a href="{% url 'crm:new_employee' %}">Add employee</a></button></li></br>
+
+        <h3>Employees to add (unemployed people):</h3>
+        <ul>
+            {% for employee_to_add in employees_to_add %}
+            <li><a href="{% url 'crm:employee' employee_to_add.id %}">{{ employee_to_add }}</a></li>
+            {% endfor %}
+        </ul>
+
+{% endblock content %}
+
+
