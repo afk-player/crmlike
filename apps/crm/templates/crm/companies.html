@@ -9,6 +9,8 @@
     <ul>
         <li><a href="{% url 'crm:company' company.id %}">{{ company.name }}</a></li>
     </ul>
+    {% empty %}
+    <p>There is no companies yet.</p>
     {% endfor %}
 
     <button><a href="{% url 'crm:new_company' %}">Add company</a></button>

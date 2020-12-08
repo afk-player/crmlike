@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 
 class Employee(models.Model):
     """Employee model"""
@@ -14,11 +12,11 @@ class Employee(models.Model):
     name = models.CharField(max_length=25, verbose_name='Employee name')
     surname = models.CharField(max_length=25, verbose_name='Employee surname')
     gender = models.CharField(max_length=6, choices=GENDER_CHOICES)
-    date_of_birth = models.DateField(verbose_name='Employee date of birth')
+    date_of_birth = models.DateField(verbose_name='Employee date of birth', blank=True, null=True)
     country = models.CharField(max_length=25, verbose_name='Employee country')
-    email = models.EmailField(verbose_name='Employee email')
+    email = models.EmailField(verbose_name='Employee email', blank=True, null=True)
     bio = models.TextField(verbose_name='Employee biography', blank=True, null=True)
-    employee_photo = models.ImageField(upload_to='employees', null=True, verbose_name='Employee photo')
+    employee_photo = models.ImageField(upload_to='employees', blank=True, null=True, verbose_name='Employee photo')
     company = models.ForeignKey('Company', verbose_name='Employee company', on_delete=models.SET_NULL,
                                 related_name='employee_company', null=True, blank=True)
     position = models.ForeignKey('Position', verbose_name='Employee position',
@@ -34,7 +32,7 @@ class Employee(models.Model):
 
 class Position(models.Model):
     """Position model"""
-    title = models.CharField(max_length=255, verbose_name='Position title')
+    title = models.CharField(max_length=255, verbose_name='Position title', unique=True)
 
     def __str__(self):
         return self.title
@@ -46,12 +44,12 @@ class Position(models.Model):
 
 class Company(models.Model):
     """Company model"""
-    name = models.CharField(max_length=255, verbose_name='Company name')
+    name = models.CharField(max_length=255, verbose_name='Company name', unique=True)
     country = models.CharField(max_length=25, verbose_name='Company country')
     foundation_date = models.DateField(verbose_name='Company foundation date')
 
     def __str__(self):
-        return self.name
+        return '{}'.format(self.name)
 
     class Meta:
         verbose_name = 'Company'
@@ -65,7 +63,10 @@ class Partnership(models.Model):
     partner = models.ManyToManyField(Company, verbose_name='Company-partner', related_name='company_partner')
 
     def __str__(self):
-        return '{}'.format(self.company)
+        partners = []
+        for partner in self.partner.all():
+            partners.append(str(partner))
+        return 'Company: {}. Partners: {}'.format(self.company, ', '.join(partners))
 
     class Meta:
         verbose_name = 'Partnership'

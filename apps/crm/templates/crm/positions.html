@@ -9,8 +9,10 @@
     <ul>
         <li>{{ position.title }}</li>
         <li><button><a href="{% url 'crm:edit_position' position.id %}">Edit position</a></button>
-            <button><a href="{% url 'crm:delete_position' position.id %}">Delete position</a></button></li>
+            <button><a href="{% url 'crm:delete_position' position.id %}">Delete position</a></button></li></br>
     </ul>
+    {% empty %}
+    <p>There is no positions yet.</p>
     {% endfor %}
 
     <button><a href="{% url 'crm:new_position' %}">Add position</a></button>

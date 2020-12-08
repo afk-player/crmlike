@@ -9,7 +9,11 @@
     <ul>
 
         <li><a href="{% url 'crm:employee' employee.id %}">{{ employee.name }} {{ employee.surname }}</a></li>
-        <li><img class="photo" src="{{ employee.employee_photo.url }}" alt="employee photo"></li></br>
+        {% if employee.employee_photo %}
+            <li><img class="photo" src="{{ employee.employee_photo.url }}" alt="employee photo"></li>
+        {% else %}
+            <li>Photo: no photo</li>
+        {% endif %}</br>
     </ul>
     {% empty %}
     <p>There is no employees yet.</p>

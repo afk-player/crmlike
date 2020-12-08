@@ -1,8 +1,49 @@
 {% extends 'crm/base.html' %}
 
-{% block menu_name %}<h3>Homepage</h3>{% endblock menu_name %}
-{% block title %}Homepage{% endblock title %}
+{% block menu_name %}<h3>API usage documentation</h3>{% endblock menu_name %}
+{% block title %}API usage documentation{% endblock title %}
 
 {% block content %}
-    <h4>Customer relationship management like</h4>
+    <h4>All HTTP methods are supported</h4>
+    </br><h4>Employees</h4>
+    <ul>
+        <li>GET <a href="{% url 'crm:get_employees' %}">api/employees</a></li>
+        <li>GET <a href="{% url 'crm:get_employee' pk=1 %}">api/employees/1</a></li>
+        <li>GET <a href="{% url 'crm:get_employees' %}?position=Programmer">api/employees?position=Programmer</a>
+            (Filter by position)</li>
+        <li>POST <a href="{% url 'crm:create_employee' %}">api/employees/create</a></li>
+        <li>PUT api/employees/1</li>
+        <li>PATCH api/employees/1</li>
+        <li>DELETE api/employees/1</li>
+    </ul>
+
+    </br><h4>Companies</h4>
+    <ul>
+        <li>GET <a href="{% url 'crm:get_companies' %}">api/companies</a></li>
+        <li>GET <a href="{% url 'crm:get_company' pk=1 %}">api/companies/1</a></li>
+        <li>POST <a href="{% url 'crm:create_company' %}">api/companies/create</a></li>
+        <li>PUT api/companies/1</li>
+        <li>PATCH api/companies/1</li>
+        <li>DELETE api/companies/1</li>
+    </ul>
+
+    </br><h4>Positions</h4>
+    <ul>
+        <li>GET <a href="{% url 'crm:get_positions' %}">api/positions</a></li>
+        <li>GET <a href="{% url 'crm:get_position' pk=1 %}">api/positions/1</a></li>
+        <li>POST <a href="{% url 'crm:create_position' %}">api/positions/create</a></li>
+        <li>PUT api/positions/1</li>
+        <li>PATCH api/positions/1</li>
+        <li>DELETE api/positions/1</li>
+    </ul>
+
+    </br><h4>Partnerships</h4>
+    <ul>
+        <li>GET <a href="{% url 'crm:get_partnerships' %}">api/partnerships</a></li>
+        <li>GET <a href="{% url 'crm:get_partnership' pk=1 %}">api/partnerships/1</a></li>
+        <li>POST <a href="{% url 'crm:create_partnership' %}">api/partnerships/create</a></li>
+        <li>PUT api/partnerships/1</li>
+        <li>PATCH api/partnerships/1</li>
+        <li>DELETE api/partnerships/1</li>
+    </ul></br>
 {% endblock content %}

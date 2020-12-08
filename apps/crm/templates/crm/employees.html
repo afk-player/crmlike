@@ -10,6 +10,8 @@
     <h4>Positions filter:</h4>
     {% for position in positions %}
         <a href="{% url 'crm:filtered_employees' position.id %}">{{ position }}</a></br>
+    {% empty %}
+    <p>There is no positions yet.</p>
     {% endfor %}
 </div></br>
 
@@ -20,6 +22,8 @@
         <li><a href="{% url 'crm:employee' employee.id %}">{{ employee.name }} {{ employee.surname }}</a>
         </li>
     </ul>
+    {% empty %}
+    <p>There is no employees yet.</p>
     {% endfor %}
     <button><a href="{% url 'crm:new_employee' %}">Add employee</a></button>
 </div>
