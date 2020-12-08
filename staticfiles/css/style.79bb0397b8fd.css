@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+
+}
+
+body {
+    background-color: #87CEEB;
+    font-size: 20px;
+    text-align: center;
+
+}
+
+.photo {
+    max-width: 200px;
+    height: auto;
+
+}
+
+header {
+    width: 100%;
+    height: 80px;
+    display: block;
+    background-color: #101010;
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+
+header a:link {
+    color: white;
+
+}
+
+header a:visited {
+    color: white;
+
+}
+
+.content {
+    background-color: ##87CEFA;
+
+}
+
+.menu_name {
+    margin-bottom: 20px;
+
+}
+
+nav {
+    line-height: 80px;
+
+}
+
+nav a {
+    letter-spacing: 3px;
+    font-size: 18px;
+    margin: 0 10px;
+    color: #fff;
+
+}

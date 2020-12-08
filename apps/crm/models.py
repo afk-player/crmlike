@@ -6,7 +6,7 @@ class Employee(models.Model):
     GENDER_CHOICES = [
         ('Male', 'Male'),
         ('Female', 'Female'),
-        ('Other', 'Other')
+        ('Other', 'Other'),
     ]
 
     name = models.CharField(max_length=25, verbose_name='Employee name')

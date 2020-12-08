@@ -6,6 +6,7 @@
     <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet">
     <title>{% block title %}{% endblock title %}</title>
 </head>
+<body>
 <header>
     <nav>
         <a href="{% url 'crm:index' %}">API usage documentation</a>
@@ -19,7 +20,5 @@
 <div class="menu_name">{% block menu_name %}{% endblock menu_name %}</div>
 
 <div class="content">{% block content %}{% endblock content %}</div>
-
 </body>
-<footer></footer>
 </html>
